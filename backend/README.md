@@ -6,6 +6,7 @@ This folder contains the backend service for the platform.
 
 ### Prerequisites
 
+git init
 What you need to install:
 
 - Node.js
