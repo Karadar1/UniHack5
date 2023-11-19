@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { primaryColor, secondaryColor } from 'src/const';
+import { secondaryColor } from 'src/const';
 
 export const Container = styled.section`
   padding-top: 6.25rem;

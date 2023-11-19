@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Card, Typography, Button } from '@mui/material';
+import { Card, Typography } from '@mui/material';
 
 export const StyledCard = styled(Card)`
   width: 15rem;
@@ -22,19 +22,22 @@ export const NameTypography = styled(Typography)`
   text-overflow: ellipsis;
 `;
 
-export const AddToCartButton = styled(Button, {
-  shouldForwardProp: (prop) => prop !== 'fullWidth'
-})(({ fullWidth }) => ({
-  backgroundColor: 'white',
-  color: 'black',
-  width: fullWidth ? '100%' : '80%',
-  fontWeight: 'bold',
-  borderRadius: 20,
-  border: '1px solid black',
-  alignSelf: 'center',
-  marginTop: 'auto',
-  '&:hover': {
-    backgroundColor: 'black',
-    color: 'white'
+export const AddToCartButton = styled('button')`
+  background-color: white;
+  color: black;
+  width: 80%;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 1px solid black;
+  align-self: center;
+  margin-top: auto;
+  padding: 10px 20px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+
+  &:hover {
+    background-color: black;
+    color: white;
   }
-}));
+`;

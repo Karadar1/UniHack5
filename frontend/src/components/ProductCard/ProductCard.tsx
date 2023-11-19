@@ -1,5 +1,12 @@
 import React from 'react';
-import { CardMedia, CardContent, CardActions, Typography } from '@mui/material';
+import { useCart, CartContext } from 'src/context/CartContext';
+import {
+  CardMedia,
+  CardContent,
+  CardActions,
+  Typography,
+  Button
+} from '@mui/material';
 import {
   StyledCard,
   NameTypography,
@@ -18,6 +25,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   imageUrl
 }) => {
   const displayImage = imageUrl[0];
+  const { dispatch } = useCart();
+
+  const handleAddToCart = () => {
+    const item = { name, price, imageUrl };
+    dispatch({ type: 'ADD_ITEM', payload: item });
+  };
 
   return (
     <StyledCard>
@@ -31,9 +44,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </Typography>
       </CardContent>
       <CardActions style={{ justifyContent: 'center' }}>
-        <AddToCartButton size="small" variant="contained">
-          Add to cart
-        </AddToCartButton>
+        <AddToCartButton onClick={handleAddToCart}>Add to cart</AddToCartButton>
       </CardActions>
     </StyledCard>
   );
