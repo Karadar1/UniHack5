@@ -8,6 +8,8 @@ import Signup from './pages/SignUp/Signup';
 import BrowsePage from './pages/BrowsePage/BrowsePage';
 import { UserPage } from './pages/UserPage/UserPage';
 import ProductPage from './pages/ProductPage/ProductPage';
+import UserSettings from './pages/UserPage/pages/AccountSettings';
+import UserPurchases from './pages/UserPage/pages/MyPurchases';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/user" element={<UserPage />} />
+        <Route path="/user/settings" element={<UserSettings />} />
+        <Route path="/user/purchases" element={<UserPurchases />} />
       </Routes>
       <ToastContainer />
     </>
