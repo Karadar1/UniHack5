@@ -5,16 +5,42 @@ import { UserContext } from '../../context/UserContext';
 import Navbar from 'src/components/Navbar/Navbar';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import AccountSettings from './pages/AccountSettings';
-import MyPurchases from './pages/MyPurchases';
+import {
+  LeftSideMenu,
+  ListMember,
+  ListMenu,
+  RigthContainer,
+  MainContainer,
+  UserPhoto
+  // UsernameContainer
+} from './UserPage.styled';
+
+const userData = {
+  username: 'test',
+  email: 'test@test.ro',
+  role: 'buyer'
+};
+
+// Placeholder image
+const userCirclePhoto = 'https://via.placeholder.com/150';
 
 export const UserPage = () => {
   const user = useContext(UserContext);
+  if (user) {
+    user.isAuthenticated = true;
+  }
+
   const navigate = useNavigate();
   const handleSignOut = () => {
     if (user) {
-      user.setUser(null);
-      user.isAuthenticated = false;
+      user.setUser(() => ({
+        username: userData.username,
+        email: userData.email,
+        role: 'buyer' // Update the role property to be of type "buyer" | "seller" | "admin"
+      }));
+      if (user.isAuthenticated) {
+        user.isAuthenticated = false;
+      }
       navigate('/');
       localStorage.removeItem('token');
       console.log('User signed out', user);
@@ -22,27 +48,19 @@ export const UserPage = () => {
   };
 
   return (
-    <div>
-      <Navbar topTransparent={false} />
-      {user?.isAuthenticated ? (
-        <div className="userContainer">
-          return (
-          {/* <Router>
-                            <Switch>
-                                <Route path='/profile/settings' Component={AccountSettings} />
-                                <Route path='/profile/purchases' Component ={MyPurchases} />
+    <>
+      <Navbar />
 
-                            </Switch>
-                        </Router> */}
-          );
-        </div>
-      ) : (
-        <div>
-          <h1>You are not logged in</h1>
-          <Link to="/login">Login</Link>
-        </div>
-      )}
-    </div>
+      <MainContainer>
+        <LeftSideMenu>
+          <UserPhoto>
+            <img src={userCirclePhoto} style={{ borderRadius: '50%' }} />
+            {/* <UsernameContainer>Username: {userData.username}</UsernameContainer> */}
+          </UserPhoto>
+        </LeftSideMenu>
+        <RigthContainer>Rigth Container</RigthContainer>
+      </MainContainer>
+    </>
   );
 };
 export default UserPage;

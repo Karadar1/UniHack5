@@ -23,8 +23,7 @@
     "moment-timezone": "^0.5.43",
     "mongoose": "^8.0.0",
     "morgan": "^1.10.0",
-    "tsc": "^2.0.4",
-    "typescript": "^5.2.2",
+    "styled-components": "^6.1.1",
     "winston": "^3.11.0"
   },
   "devDependencies": {
