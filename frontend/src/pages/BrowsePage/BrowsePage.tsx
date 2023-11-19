@@ -3,7 +3,6 @@ import { useProducts } from 'src/hooks/useProducts';
 import { TailSpin } from 'react-loader-spinner';
 import Navbar from '../../components/Navbar/Navbar';
 import { ProductCard } from 'src/components/ProductCard/ProductCard';
-import { FiltersBar } from 'src/components/FiltersBar/FiltersBar';
 import {
   Container,
   Label,
@@ -24,7 +23,11 @@ export default function BrowsePage() {
     }
 
     if (error) {
-      return <p>Error: {error}</p>;
+      return (
+        <LoaderContainer>
+          <p>No items found, please try again!</p>
+        </LoaderContainer>
+      );
     }
 
     return (
@@ -51,7 +54,6 @@ export default function BrowsePage() {
         </h2>
         <span>for the bikes that we sell</span>
       </Label>
-      {/* <FiltersBar /> */}
       {renderContent()}
     </Container>
   );
