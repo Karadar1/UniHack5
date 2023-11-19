@@ -88,7 +88,7 @@ export default function Login() {
       }
 
       toast.success('Login successful. Redirecting...');
-      setTimeout(() => navigate('/'), 1000);
+      setTimeout(() => navigate('/browse'), 1000);
     } catch (err) {
       let errorMessage = 'An unexpected error occurred.';
       if (err instanceof Error) {
