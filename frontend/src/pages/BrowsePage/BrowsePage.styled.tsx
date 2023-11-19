@@ -1,110 +1,56 @@
-import styled from "@emotion/styled";
-import { primaryColor, secondaryColor } from "src/const";
+import styled from '@emotion/styled';
+import { primaryColor, secondaryColor } from 'src/const';
 
 export const Container = styled.div`
-  padding-top: 100px;
-  margin-bottom: 2cm;
+  padding-top: 6.25rem;
+  margin-bottom: 3rem;
 `;
 
 export const Label = styled.div`
-  background: ${secondaryColor};
+  background: var(--secondary-color, ${secondaryColor});
   width: max-content;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
-  padding: 15px;
-
-  border-radius: 0 5px 5px 0;
+  padding: 1rem;
+  border-radius: 0 0.3125rem 0.3125rem 0;
 
   h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
   }
   span {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 0.8rem;
   }
 `;
 
-export const SearchInputContainer = styled.div`
-  border-bottom: 2px solid ${primaryColor};
-  min-width: 20vw;
-  width: max-content;
-  margin-left: 5vw;
-  margin-top: 5vh;
+export const ProductsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+  padding: 1rem;
 
-  padding: 0 60px 5px 20px;
-  position: relative;
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
-export const Input = styled.div`
+export const LoaderContainer = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 5px;
-
-  input {
-    height: 40px;
-    font-family: "Montserrat", sans-serif;
-    border: none;
-    font-size: 2rem;
-  }
-`;
-
-export const SortButton = styled.div`
-  position: absolute;
-  top: 30%;
-  right: 0%;
-  transform: translateX(130%);
-  height: 25px;
-  width: max-content;
-  button {
-    background: #f5f5f5;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-`;
-
-export const BikeContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  width: 70%;
-  margin-left: 15%;
-  margin-top: 40px;
-`;
-
-export const BikeCard = styled.div`
-  background: #f5f5f5;
-  padding: 20px;
-  border-radius: 5px;
-  width: 200px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
-
-  img {
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
-  }
-
-  p {
-    font-family: "Montserrat", sans-serif;
-    margin: 0;
-  }
-
-  .view-link {
-    color: ${primaryColor};
-    text-decoration: underline;
-    cursor: pointer;
-  }
+  height: 100%;
 `;
